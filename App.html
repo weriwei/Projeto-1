@@ -31,24 +31,45 @@
 
     <div id="categoryButtonsContent" class="buttonGroup hidden mt4">
       <div class="button-container">
-        <button type="button" class="button">
+        <button id="travelerButton" type="button" class="button">
           Viagens ( Avião / Buser )
           <img class="buttonIcon" src="./assets/airplane.png" />
         </button>
       </div>
 
       <div class="button-container">
-        <button type="button" class="button">
+        <button id="busButton" type="button" class="button">
           Coletivo (Ônibus / metrô)
           <img class="buttonIcon" src="./assets/bus.png" />
         </button>
       </div>
 
       <div class="button-container">
-        <button type="button" class="button">
+        <button id="carButton" type="button" class="button">
           Particular (Uber / Taxi)
           <img class="buttonIcon" src="./assets/car.png" />
         </button>
+      </div>
+    </div>
+
+    <div id="budgetInputContent" class="budgetForms hidden mt2 ml2">
+      <h1>Detalhes dos gastos</h1>
+      <div class="field mt1">
+        <label>Descrição: </label>
+        <input type="text" autocomplete="off" />
+      </div>
+      <div class="field">
+        <label>Data: </label>
+        <input type="date" autocomplete="off" />
+      </div>
+      <div class="field">
+        <label>Valor: </label>
+        <input type="number" autocomplete="off" />
+      </div>
+      <div class="budgetButtonsContainer mt1 ml2">
+        <button type="button" class="button-budget">Confirmar</button>
+        <button type="button" class="button-budget">Limpar</button>
+        <button type="button" class="button-budget">Voltar</button>
       </div>
     </div>
   </body>
