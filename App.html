@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./app.css" />
+    <link rel="stylesheet" href="./style.css" />
+    <script src="./scripts.js"></script>
+    <title>Corre ou carro?</title>
+  </head>
+  <body>
+    <header class="headerBar">
+      <div class="appName">Corre ou carro?</div>
+      <div class="wallet">
+        <img class="dolarIcon" src="./assets/dolar.png" /> <a>0,00</a>
+      </div>
+    </header>
+
+    <div id="addButtonContent" class="addContent">
+      <h1 class="mt3">Adicionar gastos</h1>
+      <button id="addButton" class="iconButton ml1">
+        <img class="addIcon mt2" src="./assets/add.png" />
+      </button>
+    </div>
+
+    <div id="blank">
+      <img src="./assets/money-bag.png" />
+      <p class="mt1">Nenhum gasto cadastrado.</p>
+    </div>
+
+    <div id="categoryButtonsContent" class="buttonGroup hidden mt4">
+      <div class="button-container">
+        <button type="button" class="button">
+          Viagens ( Avião / Buser )
+          <img class="buttonIcon" src="./assets/airplane.png" />
+        </button>
+      </div>
+
+      <div class="button-container">
+        <button type="button" class="button">
+          Coletivo (Ônibus / metrô)
+          <img class="buttonIcon" src="./assets/bus.png" />
+        </button>
+      </div>
+
+      <div class="button-container">
+        <button type="button" class="button">
+          Particular (Uber / Taxi)
+          <img class="buttonIcon" src="./assets/car.png" />
+        </button>
+      </div>
+    </div>
+  </body>
+</html>
