@@ -13,7 +13,8 @@
     <header class="headerBar">
       <div class="appName">Corre ou carro?</div>
       <div class="wallet">
-        <img class="dolarIcon" src="./assets/dolar.png" /> <a>0,00</a>
+        <img class="dolarIcon" src="./assets/dolar.png" />
+        <a id="totalBudget">0,00</a>
       </div>
     </header>
 
@@ -39,7 +40,7 @@
 
       <div class="button-container">
         <button id="busButton" type="button" class="button">
-          Coletivo (Ônibus / metrô)
+          Coletivo (Ônibus / Metrô)
           <img class="buttonIcon" src="./assets/bus.png" />
         </button>
       </div>
@@ -52,25 +53,45 @@
       </div>
     </div>
 
-    <div id="budgetInputContent" class="budgetForms hidden mt2 ml2">
+    <div id="budgetInputContent" class="budgetForms hidden mt2 ml3">
       <h1>Detalhes dos gastos</h1>
       <div class="field mt1">
         <label>Descrição: </label>
-        <input type="text" autocomplete="off" />
+        <input id="inputDescription" type="text" autocomplete="off" />
       </div>
       <div class="field">
         <label>Data: </label>
-        <input type="date" autocomplete="off" />
+        <input id="inputDate" type="date" autocomplete="off" />
       </div>
       <div class="field">
         <label>Valor: </label>
-        <input type="number" autocomplete="off" />
+        <input
+          type="number"
+          min="0.00"
+          max="10000.00"
+          step="0.01"
+          autocomplete="off"
+          id="inputValue"
+        />
       </div>
-      <div class="budgetButtonsContainer mt1 ml2">
-        <button type="button" class="button-budget">Confirmar</button>
-        <button type="button" class="button-budget">Limpar</button>
-        <button type="button" class="button-budget">Voltar</button>
+      <div class="budgetButtonsContainer mt1 ml3">
+        <button id="confirmButton" type="button" class="button-budget">
+          Confirmar
+        </button>
+        <button id="cleanButton" type="button" class="button-budget">
+          Limpar
+        </button>
+        <button id="backButton" type="button" class="button-budget">
+          Voltar
+        </button>
       </div>
+    </div>
+
+    <div id="budgetListContainer" class="budgetListContainer hidden mt2 ml3">
+      <h1>Gastos</h1>
+      <ul id="budgetList" class="list hidden mt1">
+        <li>x</li>
+      </ul>
     </div>
   </body>
 </html>

@@ -75,6 +75,7 @@
 .budgetForms {
   display: flex;
   flex-direction: column;
+  left: 20%;
   position: fixed;
 }
 
@@ -109,4 +110,23 @@
   border-radius: 0.5rem;
   border: thin solid black;
   text-align: center;
+}
+
+.budgetListContainer{
+  display: flex;
+  flex-direction: column;
+}
+
+.list {
+width: 80%;
+}
+.list li {
+  padding: 1rem;
+  border-style: solid;
+  border-width: 0 thin thin thin;
+  display: flex;
+  flex-direction: row;
+}
+.list li:first-child {
+  border-top-width: thin;
 }
