@@ -104,6 +104,18 @@
   flex: 1;
 }
 
+.singleBudgetButtonsContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.singleBudgetContainer {
+  border: thin solid black;
+  min-width: 8rem;
+  width: 80%;
+}
+
 .button-budget {
   height: 3rem;
   width: 6rem;
