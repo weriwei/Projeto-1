@@ -1,9 +1,12 @@
 let components = ['addButtonContent', 'categoryButtonsContent', 'blank', 'budgetInputContent', 'budgetListContainer'];
 let inputsId = ['#inputDescription', '#inputDate', '#inputValue'];
 
-let budgets = [{description: 'Diamantina', date: '2022-09-10', value: '177.95', type: 'Viagem', id: '1'},
-{description: 'Bh', date: '2022-09-11', value: '2.05', type: 'Viagem', id: '2'},
-{description: 'Sp', date: '2022-09-12', value: '79.90', type: 'Viagem', id: '3'}]
+let budgets = [
+    // {description: 'Diamantina', date: '2022-09-10', value: '177.95', type: 'Viagem', id: '1'},
+    // {description: 'Bh', date: '2022-09-11', value: '2.05', type: 'Viagem', id: '2'},
+    // {description: 'Sp', date: '2022-09-12', value: '79.90', type: 'Viagem', id: '3'}
+]
+
 let selectedType = '';
 
 const handleShowContent = (component) => {
@@ -61,12 +64,15 @@ const handleCleanInputs = () => {
     document.querySelector('#inputDescription').value = '';
     document.querySelector('#inputDate').value = '';
     document.querySelector('#inputValue').value = '';
+    document.querySelector('#selectedBudget').value = '';
 }
 
 const handleBackButton = () => {
     document.querySelector('#budgetListContainer').classList.remove('hidden');
     document.querySelector('#addButtonContent').classList.remove('hidden');
+
     document.querySelector('#budgetInputContent').classList.add('hidden');
+    document.querySelector('#singleBudget').classList.add('hidden');
 }
 
 const handleAddBudget = () => {
@@ -82,7 +88,6 @@ const handleAddBudget = () => {
     getTotalBudget();
     handleBackButton();
     handleBudgets();
-
 }
 
 const handleClickOnBudget = (b) => {
@@ -105,10 +110,9 @@ const handleClickOnBudget = (b) => {
 }
 const handleDeleteBudget = () => {
     const budget = document.querySelector('#selectedBudget').getAttribute('data-id');
-    console.log("budgets antes o splice: ", budgets);
-    const index = budgets.indexOf(budget);
-    budgets.splice(index);
-    console.log("budgets após o splice: ", budgets);
+
+    const index = budgets.map((b) => b.id).indexOf(budget);
+    budgets.splice(index, 1);
 
     handleCleanInputs();
     getTotalBudget();
