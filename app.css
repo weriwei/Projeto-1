@@ -20,9 +20,10 @@
   border: thin solid black;
   border-radius: 1rem;
   display: flex;
+  flex-direction: row;
+  justify-content: space-around;
   align-items: center;
-  margin-right: 2rem;
-  min-width: 6rem;
+  min-width: 7rem;
   background-color: #fff;
 }
 
@@ -43,8 +44,8 @@
 }
 
 .dolarIcon {
-  width: 40px;
-  height: 40px;
+  width: 20px;
+  height: 20px;
 }
 
 .iconButton {
@@ -112,13 +113,13 @@
   text-align: center;
 }
 
-.budgetListContainer{
+.budgetListContainer {
   display: flex;
   flex-direction: column;
 }
 
 .list {
-width: 80%;
+  width: 80%;
 }
 .list li {
   padding: 1rem;

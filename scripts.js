@@ -28,7 +28,7 @@ const getFormatedDate = (date) =>
     ((date.getDate() )) + "/" + ((date.getMonth() + 1)) + "/" + date.getFullYear(); 
 
 const handleBudgets = () => {
-    const budgetList = document .querySelector('#budgetList');
+    const budgetList = document.querySelector('#budgetList');
     budgetList.innerHTML = "";
 
     budgets.forEach((b) => {
