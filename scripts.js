@@ -24,7 +24,7 @@ const getTotalBudget = () => {
     total.innerHTML = toBRLCurrency(value);
 }
 
-const getBudget = (b) => 
+const getBudgetText = (b) => 
 b.type + " - " + b.description + " - " + getFormatedDate(new Date(b.date)) + " - " + "R$" + b.value; 
 
 const toBRLCurrency = (value) => Intl.NumberFormat('pt-br', {style: 'currency', currency: 'BRL'}).format(value);
@@ -38,7 +38,7 @@ const handleBudgets = () => {
 
     budgets.forEach((b) => {
         let elemBudget = document.createElement('li');
-        elemBudget.innerHTML= getBudget(b); 
+        elemBudget.innerHTML= getBudgetText(b); 
         elemBudget.onclick = () => (handleClickOnBudget(b));
         budgetList.appendChild(elemBudget);
     })
@@ -92,32 +92,48 @@ const handleAddBudget = () => {
 
 const handleClickOnBudget = (b) => {
     const budget = document.querySelector('#selectedBudget');
-    budget.innerHTML = getBudget(b);
+    budget.innerHTML = getBudgetText(b);
     budget.setAttribute('data-id', b.id);
 
     document.querySelector('#budgetListContainer').classList.add('hidden');
     document.querySelector('#addButtonContent').classList.add('hidden');
     document.querySelector('#singleBudget').classList.remove('hidden');
-    // const index = budgets.indexOf(b)
-    // delete budgets[index];
-
-    // budgets.length += -1;
-
-    // handleCleanInputs();
-    // getTotalBudget();
-    // handleBackButton();
-    // handleBudgets();
 }
-const handleDeleteBudget = () => {
-    const budget = document.querySelector('#selectedBudget').getAttribute('data-id');
+
+const getSelectedBudget = () => document.querySelector('#selectedBudget').getAttribute('data-id');
+
+const deleteBudget = () => {
+    const budget = getSelectedBudget();
 
     const index = budgets.map((b) => b.id).indexOf(budget);
     budgets.splice(index, 1);
+}
+
+const handleDeleteBudget = () => {
+    deleteBudget();
 
     handleCleanInputs();
     getTotalBudget();
     handleBackButton();
     handleBudgets();
+}
+
+const handleEditBudget = () => {
+    const budgetId = getSelectedBudget();
+
+    const budget = budgets.filter(b => b.id === budgetId);
+
+    document.querySelector('#singleBudget').classList.add('hidden');
+    document.querySelector('#budgetInputContent').classList.remove('hidden');
+
+
+    document.querySelector('#inputDescription').value = budget[0].description;
+    document.querySelector('#inputDate').value = budget[0].date;
+    document.querySelector('#inputValue').value = budget[0].value;
+    selectedType = budget[0].type;
+
+    // deleteBudget();
+    // handleAddBudget();
 }
 
 onload = () => {
@@ -131,9 +147,13 @@ onload = () => {
 
     document.querySelector('#backButton').onclick = () => (handleBackButton());
 
+    document.querySelector('#cancelButton').onclick = () => (handleBackButton());
+
     document.querySelector('#confirmButton').onclick = () => (handleAddBudget());
 
     document.querySelector('#deleteButton').onclick = () => (handleDeleteBudget());
+
+    document.querySelector('#editButton').onclick = () => (handleEditBudget());
 
     document.querySelector('#travelerButton').onclick = () => {
         handleShowContent('budgetInputContent');
