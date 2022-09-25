@@ -13,7 +13,8 @@
 
 .appName {
   font-size: 2rem;
-  margin-left: 2rem;
+  margin-left: 1rem;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
 
 .wallet {
@@ -21,10 +22,11 @@
   border-radius: 1rem;
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-evenly;
   align-items: center;
   min-width: 7rem;
   background-color: #fff;
+  margin-right: 0.5rem;
 }
 
 .addContent {
@@ -39,8 +41,8 @@
 }
 
 .buttonIcon {
-  width: 64px;
-  height: 64px;
+  width: 60px;
+  height: 60px;
 }
 
 .dolarIcon {
@@ -54,46 +56,34 @@
 }
 
 .button {
-  height: 12rem;
-  width: 20rem;
+  height: 6rem;
+  width: 15rem;
   padding: 0.25rem 0.5rem;
-  border-radius: 0.5rem;
-  border: thin solid black;
+  border-radius: 1rem;
+  border: thin solid grey;
   text-align: center;
+  font-weight: 500;
 }
 
 .buttonGroup {
   display: flex;
+  justify-content: space-evenly;
   flex-direction: column;
   align-items: center;
 }
-
-.button-container {
-  display: inline-block;
-  justify-items: flex-end;
-}
-
-.budgetForms {
-  display: flex;
-  flex-direction: column;
-  left: 20%;
-  position: fixed;
+.buttonGroup button {
+  margin-top: 2rem;
 }
 
 .field {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  flex-direction: column;
   align-items: center;
 }
 
-.field label {
-  margin-right: 1rem;
-  width: 5rem;
-}
 .field input {
-  flex: 1;
   height: 2rem;
+  width: 70%;
   padding: 0.3rem 0.7rem;
 }
 
@@ -101,7 +91,6 @@
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  flex: 1;
 }
 
 .singleBudgetButtonsContainer {
@@ -117,12 +106,17 @@
 }
 
 .button-budget {
-  height: 3rem;
+  height: 2rem;
   width: 6rem;
-  padding: 0.25rem 0.5rem;
-  border-radius: 0.5rem;
+  border-radius: 0.8rem;
   border: thin solid black;
   text-align: center;
+  font-weight: 600;
+}
+
+.budgetButtonsContainer button:hover,
+.buttonGroup button:hover {
+  background-color: #53b3cb;
 }
 
 .budgetListContainer {

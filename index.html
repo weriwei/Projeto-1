@@ -30,40 +30,32 @@
       <p class="mt1">Nenhum gasto cadastrado.</p>
     </div>
 
-    <div id="categoryButtonsContent" class="buttonGroup hidden mt4">
-      <div class="button-container">
-        <button id="travelerButton" type="button" class="button">
-          Viagens ( Avião / Buser )
-          <img class="buttonIcon" src="./assets/airplane.png" />
-        </button>
-      </div>
+    <div id="categoryButtonsContent" class="buttonGroup hidden mt2">
+      <button id="travelerButton" type="button" class="button">
+        Viagens ( Avião / Buser )
+        <img class="buttonIcon" src="./assets/airplane.png" />
+      </button>
 
-      <div class="button-container">
-        <button id="busButton" type="button" class="button">
-          Coletivo (Ônibus / Metrô)
-          <img class="buttonIcon" src="./assets/bus.png" />
-        </button>
-      </div>
+      <button id="busButton" type="button" class="button">
+        Coletivo (Ônibus / Metrô)
+        <img class="buttonIcon" src="./assets/bus.png" />
+      </button>
 
-      <div class="button-container">
-        <button id="carButton" type="button" class="button">
-          Particular (Uber / Taxi)
-          <img class="buttonIcon" src="./assets/car.png" />
-        </button>
-      </div>
+      <button id="carButton" type="button" class="button">
+        Particular (Uber / Taxi)
+        <img class="buttonIcon" src="./assets/car.png" />
+      </button>
     </div>
 
-    <div id="budgetInputContent" class="budgetForms hidden mt2 ml3">
-      <h1>Detalhes dos gastos</h1>
-      <div class="field mt1">
+    <div id="budgetInputContent" class="hidden mt2">
+      <h1 class="ml2">Detalhes dos gastos</h1>
+      <div class="field mt2">
         <label>Descrição: </label>
-        <input id="inputDescription" type="text" autocomplete="off" />
-      </div>
-      <div class="field">
+        <input id="inputDescription" type="text" autocomplete="off" required />
+
         <label>Data: </label>
-        <input id="inputDate" type="date" autocomplete="off" />
-      </div>
-      <div class="field">
+        <input id="inputDate" type="date" autocomplete="off" required />
+
         <label>Valor: </label>
         <input
           type="number"
@@ -72,9 +64,10 @@
           step="0.01"
           autocomplete="off"
           id="inputValue"
+          required
         />
       </div>
-      <div class="budgetButtonsContainer mt1 ml3">
+      <div class="budgetButtonsContainer mt3">
         <button id="confirmButton" type="button" class="button-budget">
           Confirmar
         </button>
