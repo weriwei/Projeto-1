@@ -1,0 +1,12 @@
+{
+    "name": "Corre ou carro?",
+    "short_name": "PWA",
+    "description": "Aplicação para calcular custos com transporte e viabilidade de se ter um carro.",
+    "lang": "pt-BR",
+    "start_url": ".",
+    "scope": ".",
+    "display": "standalone",
+    "background_color": "#fff",
+    "theme_color": "#f66",
+    "dir": "ltr"
+  }
