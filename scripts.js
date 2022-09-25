@@ -6,14 +6,95 @@ let components = [
   "budgetListContainer",
 ];
 let inputsId = ["#inputDescription", "#inputDate", "#inputValue"];
-
 let budgets = [
-  // {description: 'Diamantina', date: '2022-09-10', value: '177.95', type: 'Viagem', id: '1'},
-  // {description: 'Bh', date: '2022-09-11', value: '2.05', type: 'Viagem', id: '2'},
-  // {description: 'Sp', date: '2022-09-12', value: '79.90', type: 'Viagem', id: '3'}
+  {
+    description: "Diamantina",
+    date: "2022-09-10",
+    value: "177.95",
+    type: "Viagem",
+    id: "1",
+  },
+  {
+    description: "Bh",
+    date: "2022-09-11",
+    value: "2.05",
+    type: "Viagem",
+    id: "2",
+  },
+  {
+    description: "Sp",
+    date: "2022-09-12",
+    value: "79.90",
+    type: "Viagem",
+    id: "3",
+  },
+  {
+    description: "Diamantina",
+    date: "2022-09-10",
+    value: "177.95",
+    type: "Viagem",
+    id: "4",
+  },
+  {
+    description: "Bh",
+    date: "2022-09-11",
+    value: "2.05",
+    type: "Viagem",
+    id: "5",
+  },
+  {
+    description: "Sp",
+    date: "2022-09-12",
+    value: "79.90",
+    type: "Viagem",
+    id: "6",
+  },
+  {
+    description: "Diamantina",
+    date: "2022-09-10",
+    value: "177.95",
+    type: "Viagem",
+    id: "1",
+  },
+  {
+    description: "Bh",
+    date: "2022-09-11",
+    value: "2.05",
+    type: "Viagem",
+    id: "2",
+  },
+  {
+    description: "Sp",
+    date: "2022-09-12",
+    value: "79.90",
+    type: "Viagem",
+    id: "3",
+  },
+  {
+    description: "Diamantina",
+    date: "2022-09-10",
+    value: "177.95",
+    type: "Viagem",
+    id: "4",
+  },
+  {
+    description: "Bh",
+    date: "2022-09-11",
+    value: "2.05",
+    type: "Viagem",
+    id: "5",
+  },
+  {
+    description: "Sp",
+    date: "2022-09-12",
+    value: "79.90",
+    type: "Viagem",
+    id: "6",
+  },
 ];
 
 let selectedType = "";
+let editMode = false;
 
 const handleShowContent = (component) => {
   components.forEach((c) => {
@@ -103,6 +184,9 @@ const isFieldsEmpty = () => {
 };
 
 const handleAddBudget = () => {
+  if (editMode) {
+    deleteBudget();
+  }
   if (!isFieldsEmpty()) {
     budgets.push({
       description: document.querySelector(inputsId[0]).value,
@@ -112,6 +196,7 @@ const handleAddBudget = () => {
       id: Math.random().toString().replace("0.", ""),
     });
 
+    editMode = false;
     handleCleanInputs();
     getTotalBudget();
     handleBackButton();
@@ -149,8 +234,8 @@ const handleDeleteBudget = () => {
 };
 
 const handleEditBudget = () => {
+  editMode = true;
   const budgetId = getSelectedBudget();
-
   const budget = budgets.filter((b) => b.id === budgetId);
 
   document.querySelector("#singleBudget").classList.add("hidden");
@@ -160,9 +245,6 @@ const handleEditBudget = () => {
   document.querySelector("#inputDate").value = budget[0].date;
   document.querySelector("#inputValue").value = budget[0].value;
   selectedType = budget[0].type;
-
-  // deleteBudget();
-  // handleAddBudget();
 };
 
 onload = () => {

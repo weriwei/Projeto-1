@@ -93,16 +93,12 @@
   justify-content: space-around;
 }
 
-.singleBudgetButtonsContainer {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-}
-
 .singleBudgetContainer {
+  display: flex;
+  justify-content: space-around;
   border: thin solid black;
-  min-width: 8rem;
-  width: 80%;
+  width: 90%;
+  align-content: center;
 }
 
 .button-budget {
