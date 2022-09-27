@@ -11,6 +11,15 @@ let budgets = [];
 let selectedType = "";
 let editMode = false;
 
+const getBudgetsInLocalStorage = () => {
+  const hasBudgets = JSON.parse(localStorage.getItem("budgets"));
+  if (hasBudgets) budgets = hasBudgets;
+};
+
+const saveBudgetsInLocalStorage = () => {
+  localStorage.setItem("budgets", JSON.stringify(budgets));
+};
+
 const handleShowContent = (component) => {
   components.forEach((c) => {
     document.querySelector("#" + c).classList.add("hidden");
@@ -28,7 +37,7 @@ const getTotalBudget = () => {
   total.innerHTML = toBRLCurrency(value);
 };
 
-const getBudgetText = (b) =>
+const formatBudgetText = (b) =>
   b.type +
   " - " +
   b.description +
@@ -46,17 +55,7 @@ const toBRLCurrency = (value) =>
 const getFormatedDate = (date) =>
   date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
 
-const handleBudgets = () => {
-  const budgetList = document.querySelector("#budgetList");
-  budgetList.innerHTML = "";
-
-  budgets.forEach((b) => {
-    let elemBudget = document.createElement("li");
-    elemBudget.innerHTML = getBudgetText(b);
-    elemBudget.onclick = () => handleClickOnBudget(b);
-    budgetList.appendChild(elemBudget);
-  });
-
+const handleBlankContent = () => {
   if (budgets.length > 0) {
     budgetList.classList.remove("hidden");
     document.querySelector("#budgetListContainer").classList.remove("hidden");
@@ -68,12 +67,26 @@ const handleBudgets = () => {
   }
 };
 
-const handleBudget = (budgetType) => {
+const listBudgets = () => {
+  const budgetList = document.querySelector("#budgetList");
+  budgetList.innerHTML = "";
+
+  budgets.forEach((b) => {
+    let elemBudget = document.createElement("li");
+    elemBudget.innerHTML = formatBudgetText(b);
+    elemBudget.onclick = () => handleClickOnBudget(b);
+    budgetList.appendChild(elemBudget);
+  });
+
+  handleBlankContent();
+};
+
+const setSelectedType = (budgetType) => {
   document.querySelector("#inputDescription").focus();
   selectedType = budgetType;
 };
 
-const handleCleanInputs = () => {
+const handleClearInputs = () => {
   document.querySelector("#inputDescription").value = "";
   document.querySelector("#inputDate").value = "";
   document.querySelector("#inputValue").value = "";
@@ -85,7 +98,7 @@ const handleBackButton = () => {
   document.querySelector("#budgetInputContent").classList.add("hidden");
   document.querySelector("#singleBudget").classList.add("hidden");
 
-  handleBudgets();
+  listBudgets();
 };
 const isFieldsEmpty = () => {
   if (
@@ -112,16 +125,17 @@ const handleAddBudget = () => {
     });
 
     editMode = false;
-    handleCleanInputs();
+    handleClearInputs();
     getTotalBudget();
     handleBackButton();
-    handleBudgets();
+    listBudgets();
+    saveBudgetsInLocalStorage();
   }
 };
 
 const handleClickOnBudget = (b) => {
   const budget = document.querySelector("#selectedBudget");
-  budget.innerHTML = getBudgetText(b);
+  budget.innerHTML = formatBudgetText(b);
   budget.setAttribute("data-id", b.id);
 
   document.querySelector("#budgetListContainer").classList.add("hidden");
@@ -142,10 +156,11 @@ const deleteBudget = () => {
 const handleDeleteBudget = () => {
   deleteBudget();
 
-  handleCleanInputs();
+  handleClearInputs();
   getTotalBudget();
   handleBackButton();
-  handleBudgets();
+  listBudgets();
+  saveBudgetsInLocalStorage();
 };
 
 const handleEditBudget = () => {
@@ -163,13 +178,14 @@ const handleEditBudget = () => {
 };
 
 onload = () => {
-  handleBudgets();
+  getBudgetsInLocalStorage();
+  listBudgets();
   getTotalBudget();
 
   document.querySelector("#addButton").onclick = () => {
     handleShowContent("categoryButtonsContent");
   };
-  document.querySelector("#cleanButton").onclick = () => handleCleanInputs();
+  document.querySelector("#cleanButton").onclick = () => handleClearInputs();
 
   document.querySelector("#backButton").onclick = () => handleBackButton();
 
@@ -183,14 +199,14 @@ onload = () => {
 
   document.querySelector("#travelerButton").onclick = () => {
     handleShowContent("budgetInputContent");
-    handleBudget("Viagem");
+    setSelectedType("Viagem");
   };
   document.querySelector("#busButton").onclick = () => {
     handleShowContent("budgetInputContent");
-    handleBudget("Ônibus");
+    setSelectedType("Ônibus");
   };
   document.querySelector("#carButton").onclick = () => {
     handleShowContent("budgetInputContent");
-    handleBudget("Carro");
+    setSelectedType("Carro");
   };
 };
