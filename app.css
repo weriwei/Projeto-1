@@ -133,3 +133,9 @@
 .list li:first-child {
   border-top-width: thin;
 }
+
+.filterContainer {
+  display: block;
+  float: right;
+  padding-right: 1rem;
+}

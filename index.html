@@ -19,10 +19,20 @@
     </header>
 
     <div id="addButtonContent" class="addContent">
-      <h1 class="mt3">Adicionar gastos</h1>
+      <h1 class="mt2">Adicionar gastos</h1>
       <button id="addButton" class="iconButton ml1">
-        <img class="addIcon mt2" src="./assets/add.png" />
+        <img class="addIcon mt1" src="./assets/add.png" />
       </button>
+    </div>
+
+    <div id="filterContent" class="filterContainer mt1 hidden">
+      <label for="cars">Filtrar: </label>
+      <select name="filter" id="filter" onchange="listBudgets()">
+        <option value="All" selected>Exibir tudo</option>
+        <option value="Viagem">Viagem</option>
+        <option value="Carro">Corrida particular</option>
+        <option value="Ônibus">Transporte público</option>
+      </select>
     </div>
 
     <div id="blank">
@@ -31,18 +41,18 @@
     </div>
 
     <div id="categoryButtonsContent" class="buttonGroup hidden mt2">
-      <button id="travelerButton" type="button" class="button">
+      <button id="travelButton" type="button" class="button">
         Viagens ( Avião / Buser )
         <img class="buttonIcon" src="./assets/airplane.png" />
       </button>
 
       <button id="busButton" type="button" class="button">
-        Coletivo (Ônibus / Metrô)
+        Coletivo ( Ônibus / Metrô )
         <img class="buttonIcon" src="./assets/bus.png" />
       </button>
 
       <button id="carButton" type="button" class="button">
-        Particular (Uber / Taxi)
+        Particular ( Uber / Táxi )
         <img class="buttonIcon" src="./assets/car.png" />
       </button>
     </div>
@@ -80,7 +90,7 @@
       </div>
     </div>
 
-    <div id="budgetListContainer" class="budgetListContainer hidden mt2 ml3">
+    <div id="budgetListContainer" class="budgetListContainer hidden mt3 ml3">
       <h1>Gastos</h1>
       <ul id="budgetList" class="list hidden mt1"></ul>
     </div>

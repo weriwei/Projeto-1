@@ -4,12 +4,15 @@ let components = [
   "blank",
   "budgetInputContent",
   "budgetListContainer",
+  "filterContent",
 ];
 let inputsId = ["#inputDescription", "#inputDate", "#inputValue"];
 let budgets = [];
 
 let selectedType = "";
 let editMode = false;
+
+navigator.serviceWorker.register("./sw.js");
 
 const getBudgetsInLocalStorage = () => {
   const hasBudgets = JSON.parse(localStorage.getItem("budgets"));
@@ -55,30 +58,37 @@ const toBRLCurrency = (value) =>
 const getFormatedDate = (date) =>
   date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
 
-const handleBlankContent = () => {
-  if (budgets.length > 0) {
-    budgetList.classList.remove("hidden");
-    document.querySelector("#budgetListContainer").classList.remove("hidden");
-    document.querySelector("#blank").classList.add("hidden");
-  } else {
-    budgetList.classList.add("hidden");
-    document.querySelector("#budgetListContainer").classList.add("hidden");
-    document.querySelector("#blank").classList.remove("hidden");
-  }
+const getFilteredList = () => {
+  const selectedFilter = document.querySelector("#filter").value;
+  if (selectedFilter === "All") return budgets;
+
+  return budgets.filter((b) => b.type === selectedFilter);
 };
 
 const listBudgets = () => {
   const budgetList = document.querySelector("#budgetList");
   budgetList.innerHTML = "";
 
-  budgets.forEach((b) => {
+  const list = getFilteredList();
+
+  list.forEach((b) => {
     let elemBudget = document.createElement("li");
     elemBudget.innerHTML = formatBudgetText(b);
     elemBudget.onclick = () => handleClickOnBudget(b);
     budgetList.appendChild(elemBudget);
   });
 
-  handleBlankContent();
+  if (budgets.length > 0) {
+    budgetList.classList.remove("hidden");
+    document.querySelector("#budgetListContainer").classList.remove("hidden");
+    document.querySelector("#blank").classList.add("hidden");
+    document.querySelector("#filterContent").classList.remove("hidden");
+  } else {
+    budgetList.classList.add("hidden");
+    document.querySelector("#budgetListContainer").classList.add("hidden");
+    document.querySelector("#blank").classList.remove("hidden");
+    document.querySelector("#filterContent").classList.add("hidden");
+  }
 };
 
 const setSelectedType = (budgetType) => {
@@ -141,6 +151,7 @@ const handleClickOnBudget = (b) => {
   document.querySelector("#budgetListContainer").classList.add("hidden");
   document.querySelector("#addButtonContent").classList.add("hidden");
   document.querySelector("#singleBudget").classList.remove("hidden");
+  document.querySelector("#filterContent").classList.add("hidden");
 };
 
 const getSelectedBudget = () =>
@@ -185,6 +196,7 @@ onload = () => {
   document.querySelector("#addButton").onclick = () => {
     handleShowContent("categoryButtonsContent");
   };
+
   document.querySelector("#cleanButton").onclick = () => handleClearInputs();
 
   document.querySelector("#backButton").onclick = () => handleBackButton();
@@ -197,7 +209,7 @@ onload = () => {
 
   document.querySelector("#editButton").onclick = () => handleEditBudget();
 
-  document.querySelector("#travelerButton").onclick = () => {
+  document.querySelector("#travelButton").onclick = () => {
     handleShowContent("budgetInputContent");
     setSelectedType("Viagem");
   };
