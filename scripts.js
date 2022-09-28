@@ -58,6 +58,7 @@ const toBRLCurrency = (value) =>
 const getFormatedDate = (date) =>
   date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
 
+// Retorna a lista de gastos filtrada pelo parametro informado pelo usuário
 const getFilteredList = () => {
   const selectedFilter = document.querySelector("#filter").value;
   if (selectedFilter === "All") return budgets;
@@ -65,6 +66,7 @@ const getFilteredList = () => {
   return budgets.filter((b) => b.type === selectedFilter);
 };
 
+// Lista na tela os elementos
 const listBudgets = () => {
   const budgetList = document.querySelector("#budgetList");
   budgetList.innerHTML = "";
@@ -78,6 +80,7 @@ const listBudgets = () => {
     budgetList.appendChild(elemBudget);
   });
 
+  // Se a lista não estiver vazia, exibe o componente para filtragem, remove a marca d'agua e exibe a listagem
   if (budgets.length > 0) {
     budgetList.classList.remove("hidden");
     document.querySelector("#budgetListContainer").classList.remove("hidden");
@@ -91,6 +94,7 @@ const listBudgets = () => {
   }
 };
 
+// Salva o tipo do gasto em uma variavel para ser usada na criação e edição de gastos
 const setSelectedType = (budgetType) => {
   document.querySelector("#inputDescription").focus();
   selectedType = budgetType;
@@ -110,6 +114,7 @@ const handleBackButton = () => {
 
   listBudgets();
 };
+
 const isFieldsEmpty = () => {
   if (
     (document.querySelector(inputsId[0]).value &&
@@ -121,6 +126,8 @@ const isFieldsEmpty = () => {
   return false;
 };
 
+// Adiciona um gasto na lista;
+// Para modo edição, existe uma variavel de controle 'editMode'. Nesse caso, o item selecionado para edição é removido da lista atráves do método splice, e o novo item é adicionado no lugar.
 const handleAddBudget = () => {
   if (editMode) {
     deleteBudget();
@@ -143,6 +150,8 @@ const handleAddBudget = () => {
   }
 };
 
+// Quando o usuário clica em um gasto na listagem, é setado o id e apresentado o menu para edição ou exclusão.
+// O id é utiizado para encontrar o item na lista atráves do método indexOf
 const handleClickOnBudget = (b) => {
   const budget = document.querySelector("#selectedBudget");
   budget.innerHTML = formatBudgetText(b);
@@ -154,6 +163,7 @@ const handleClickOnBudget = (b) => {
   document.querySelector("#filterContent").classList.add("hidden");
 };
 
+// Retorna o elemento que o usuário selecionou na listagem de gastos.
 const getSelectedBudget = () =>
   document.querySelector("#selectedBudget").getAttribute("data-id");
 
@@ -164,6 +174,7 @@ const deleteBudget = () => {
   budgets.splice(index, 1);
 };
 
+// Deleta o item selecionado, limpa os dados dos campos, calcula todos os gastos, atualiza a listagem e salva no localStorage
 const handleDeleteBudget = () => {
   deleteBudget();
 
@@ -174,6 +185,7 @@ const handleDeleteBudget = () => {
   saveBudgetsInLocalStorage();
 };
 
+// Preenche os campos com os dados ja existentes e exibe a tela com os inputs e botões para confirmar ou cancelar a edição.
 const handleEditBudget = () => {
   editMode = true;
   const budgetId = getSelectedBudget();
