@@ -18,7 +18,7 @@
 * A aplicação está completa? `Sim`
 
 # Dados:
-> A aplicação trabalha com uma lista de objetos do tipo:
+A aplicação trabalha com uma lista de objetos do tipo:
 ```
 {
     "description": "Diamantina",
@@ -35,6 +35,7 @@
 Possui uma headerBar com o título da aplicação e um campo que apresenta a soma dos gastos.
 Botão para adicionar gastos.
 Imagem de fundo demonstrando quando não existem gastos cadastrados
+
 ![initial screen.](/screenshots/01.jpg)
 
 ### Tela cadastro de gastos:
@@ -43,6 +44,7 @@ Ao clicar em adicionar gastos é aberto uma nova tela da aplicação.
  1. Viagem ( Avião / Buser)
  1. Transporte coletivo ( Ônibus / Metrô )
  1. Particular ( Uber/ Táxi )
+
 ![initial screen.](/screenshots/02.jpg)
 
 ### Tela para detalhar o gasto:
@@ -56,6 +58,7 @@ A tela possui 3 botões de ação:
  1. Confirmar (Salva o dado)
  1. Limpar (Limpa os dados das entradas)
  3. Voltar (Volta para a tela inicial)
+
 ![initial screen.](/screenshots/03.jpg)
 
 ### Tela inicial / Listagem:
@@ -67,12 +70,14 @@ O somatório dos gatos é apresentado na headerBar
  1. Viagem ( Avião / Buser)
  1. Transporte público ( Ônibus / Metrô )
  1. Corrida Particular ( Uber/ Táxi )
+
 ![initial screen.](/screenshots/04.jpg)
 
 ### Tela de alteração / exclusão
 Ao clicar em qualquer item da listagem, a tela de alteração / exclusão é apresentada.
 Ao clicar em Editar, a tela de detalhar é apresentada, com os valores carregados em cada campo.
 Ao alterar qualquer dado e confirmar, o registro será atualizado e a aplicação redireciona para a tela de listagem.
+
 ![initial screen.](/screenshots/05.jpg)
 
 
